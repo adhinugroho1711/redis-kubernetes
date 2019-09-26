@@ -36,16 +36,3 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /mnt/redis-cluster-slave-1
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: redis-data-redis-cluster-slave-2
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 8Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: /mnt/redis-cluster-slave-2
