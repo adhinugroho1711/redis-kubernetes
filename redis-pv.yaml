@@ -1,38 +1,89 @@
-apiVersion: v1
 kind: PersistentVolume
+apiVersion: v1
 metadata:
   name: redis-data-redis-cluster-master-0
+  labels:
+    type: local
+    app: redis-cluster
 spec:
   storageClassName: manual
   capacity:
     storage: 8Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   hostPath:
-    path: /mnt/redis-cluster-master-0
+    path: "/mnt/redis-cluster"
 ---
+kind: PersistentVolumeClaim
 apiVersion: v1
+metadata:
+  name: redis-data-redis-cluster-master-0
+  labels:
+    app: redis-cluster
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 8Gi
+---
 kind: PersistentVolume
+apiVersion: v1
 metadata:
   name: redis-data-redis-cluster-slave-0
+  labels:
+    type: local
+    app: redis-cluster
 spec:
   storageClassName: manual
   capacity:
     storage: 8Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   hostPath:
-    path: /mnt/redis-cluster-slave-0
+    path: "/mnt/redis-cluster"
 ---
+kind: PersistentVolumeClaim
 apiVersion: v1
+metadata:
+  name: redis-data-redis-cluster-slave-0
+  labels:
+    app: redis-cluster
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 8Gi
+---
 kind: PersistentVolume
+apiVersion: v1
 metadata:
   name: redis-data-redis-cluster-slave-1
+  labels:
+    type: local
+    app: redis-cluster
 spec:
   storageClassName: manual
   capacity:
     storage: 8Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   hostPath:
-    path: /mnt/redis-cluster-slave-1
+    path: "/mnt/redis-cluster"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: redis-data-redis-cluster-slave-1
+  labels:
+    app: redis-cluster
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 8Gi
