@@ -1,89 +1,51 @@
-kind: PersistentVolume
 apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: data-redis-redis-master-0
-  labels:
-    type: local
-    app: redis
+  name: redis-data-redis-cluster-master-0
 spec:
   storageClassName: manual
   capacity:
     storage: 8Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
-    path: "/mnt/data"
+    path: /mnt/redis-cluster-master-0
 ---
-kind: PersistentVolumeClaim
 apiVersion: v1
-metadata:
-  name: data-redis-redis-master-0
-  labels:
-    app: redis
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 8Gi
----
 kind: PersistentVolume
-apiVersion: v1
 metadata:
-  name: data-redis-slave-0
-  labels:
-    type: local
-    app: redis
+  name: redis-data-redis-cluster-slave-0
 spec:
   storageClassName: manual
   capacity:
     storage: 8Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
-    path: "/mnt/data"
+    path: /mnt/redis-cluster-slave-0
 ---
-kind: PersistentVolumeClaim
 apiVersion: v1
-metadata:
-  name: data-redis-slave-0
-  labels:
-    app: redis
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 8Gi
----
 kind: PersistentVolume
-apiVersion: v1
 metadata:
-  name: data-redis-redis-slave-1
-  labels:
-    type: local
-    app: redis
+  name: redis-data-redis-cluster-slave-1
 spec:
   storageClassName: manual
   capacity:
     storage: 8Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
-    path: "/mnt/data"
+    path: /mnt/redis-cluster-slave-1
 ---
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: data-redis-redis-slave-1
-  labels:
-    app: redis
+  name: redis-data-redis-cluster-slave-2
 spec:
   storageClassName: manual
+  capacity:
+    storage: 8Gi
   accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 8Gi
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/redis-cluster-slave-2
